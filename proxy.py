@@ -337,7 +337,10 @@ class Connection(object):
 
     def send(self, data):
         # TODO: Gracefully handle BrokenPipeError exceptions
-        return self.conn.send(data)
+        try:
+            return self.conn.send(data)
+        except:
+            pass
 
     def recv(self, bufsiz=8192):
         try:
